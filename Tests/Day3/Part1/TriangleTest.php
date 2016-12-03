@@ -37,6 +37,7 @@ class TriangleTest extends \PHPUnit_Framework_TestCase
     {
         return [
             ['$sides' => [5, 10, 25]],
+            ['$sides' => [5, 10, 15]],
             ['$sides' => [25, 10, 5]],
             ['$sides' => [10, 25, 5]],
         ];
