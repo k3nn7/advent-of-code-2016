@@ -40,8 +40,6 @@ class Main
             }
         }
 
-        echo $this->display->getContent();
-
         return $this->display->litCount();
     }
 }
