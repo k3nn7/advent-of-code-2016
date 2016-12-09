@@ -37,7 +37,7 @@ class Display
 
     public function rotateColumn(int $x, int $by): void
     {
-        $column = array_column($this->content, 0);
+        $column = array_column($this->content, $x);
 
         for ($i = 0; $i < $by; $i++) {
             array_unshift($column, array_pop($column));
@@ -53,5 +53,15 @@ class Display
         for ($i = 0; $i < $by; $i++) {
             array_unshift($this->content[$y], array_pop($this->content[$y]));
         }
+    }
+
+    public function litCount(): int
+    {
+        return array_reduce($this->content, function (int $count, array $rows): int {
+            return $count + array_reduce($rows, function (int $count, bool $lit) {
+                if ($lit) return ++$count;
+                return $count;
+            }, 0);
+        }, 0);
     }
 }

@@ -62,6 +62,13 @@ class DisplayTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedContent, $content);
     }
 
+    public function test_lit_count(): void
+    {
+        $this->display->rect(2, 2);
+
+        $this->assertEquals(4, $this->display->litCount());
+    }
+
     public function rectDataProvider(): array
     {
         return [
@@ -95,6 +102,16 @@ class DisplayTest extends \PHPUnit_Framework_TestCase
                '$x' => 0,
                '$by' => 2,
                '$expectedContent' => "##..\n.#..\n#...\n"
+           ],
+           [
+               '$x' => 1,
+               '$by' => 2,
+               '$expectedContent' => "##..\n#...\n.#..\n"
+           ],
+           [
+               '$x' => 2,
+               '$by' => 2,
+               '$expectedContent' => "##..\n##..\n....\n"
            ],
        ];
     }
