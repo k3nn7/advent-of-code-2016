@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace AOC\Tests\Day6\Part1;
+namespace AOC\Tests\Day6\Part2;
 
-use AOC\Day6\Part1\Main;
+use AOC\Day6\Part2\Main;
 
 class MainTest extends \PHPUnit_Framework_TestCase
 {
     public function test_run()
     {
         $input = "eedadn\ndrvtee\neandsr\nraavrd\natevrs\ntsrnev\nsdttsa\nrasrtv\nnssdts\nntnada\nsvetve\ntesnvt\nvntsnd\nvrdear\ndvrsen\nenarar\n";
-        $expectedOutput = 'easter';
+        $expectedOutput = 'advent';
 
         $main = new Main();
         $output = $main->run($input);

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace AOC\Day6\Part1;
+namespace AOC\Day6\Part2;
 
 class Main
 {
@@ -12,24 +12,24 @@ class Main
             return strlen($signal) > 0;
         });
 
-        $characterCount = [];
+        $charactedCouts = [];
 
         foreach ($signals as $signal) {
             for ($i = 0; $i < strlen($signal); $i++) {
                 $char = $signal[$i];
-                if (!isset($characterCount[$i][$char])) {
-                    $characterCount[$i][$char] = 0;
+                if (!isset($charactedCouts[$i][$char])) {
+                    $charactedCouts[$i][$char] = 0;
                 }
-                $characterCount[$i][$char]++;
+                $charactedCouts[$i][$char]++;
             }
         }
 
-        $characterCount = array_map(function (array $counts): array {
-            arsort($counts);
+        $charactedCouts = array_map(function (array $counts): array {
+            asort($counts);
             return $counts;
-        }, $characterCount);
+        }, $charactedCouts);
 
-        return array_reduce($characterCount, function (string $password, array $counts): string {
+        return array_reduce($charactedCouts, function (string $password, array $counts): string {
             return $password . array_keys($counts)[0];
         }, '');
     }
