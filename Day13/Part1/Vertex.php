@@ -13,6 +13,15 @@ class Vertex
      * @var Vertex[]
      */
     private $neighbours = [];
+    /**
+     * @var string
+     */
+    private $type;
+
+    public function __construct(string $type = '')
+    {
+        $this->type = $type;
+    }
 
     public function linkTo(Vertex $other, int $cost): void
     {
@@ -53,5 +62,10 @@ class Vertex
         }
 
         return $distance;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 }
