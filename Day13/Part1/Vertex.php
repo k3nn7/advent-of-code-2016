@@ -64,8 +64,20 @@ class Vertex
         return $distance;
     }
 
-    public function getType(): string
+    public function distanceToNeighbour(Vertex $neighbour): int
+    {
+        $hash = spl_object_hash($neighbour);
+        if (!array_key_exists($hash, $this->links)) return PHP_INT_MAX;
+        return $this->links[$hash];
+    }
+
+    public function getName(): string
     {
         return $this->type;
+    }
+
+    public function getNeighbours()
+    {
+        return array_values($this->neighbours);
     }
 }

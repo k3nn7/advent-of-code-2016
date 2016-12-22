@@ -44,4 +44,22 @@ class VertexTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(9, $a->distanceTo($d));
     }
+
+    public function test_getName()
+    {
+        $v = new Vertex('#');
+        $this->assertEquals('#', $v->getName());
+    }
+
+    public function test_getNeighbours()
+    {
+        $a = new Vertex('a');
+        $b = new Vertex('b');
+        $c = new Vertex('c');
+
+        $a->linkTo($b, 1);
+        $a->linkTo($c, 1);
+
+        $this->assertEquals([$b, $c], $a->getNeighbours());
+    }
 }
