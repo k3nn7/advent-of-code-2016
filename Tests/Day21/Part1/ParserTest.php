@@ -36,8 +36,8 @@ class ParserTest extends \PHPUnit_Framework_TestCase
                 '$expectedOutput' => [Operation::SWAP_POSITION, 9, 11],
             ],
             [
-                '$input' => 'swap letter 28 with letter 3',
-                '$expectedOutput' => [Operation::SWAP_LETTER, 28, 3],
+                '$input' => 'swap letter b with letter d',
+                '$expectedOutput' => [Operation::SWAP_LETTER, 'b', 'd'],
             ],
             [
                 '$input' => 'rotate left 10 steps',
@@ -48,8 +48,8 @@ class ParserTest extends \PHPUnit_Framework_TestCase
                 '$expectedOutput' => [Operation::ROTATE_RIGHT, 1],
             ],
             [
-                '$input' => 'rotate based on position of letter 15',
-                '$expectedOutput' => [Operation::ROTATE_BASED, 15],
+                '$input' => 'rotate based on position of letter c',
+                '$expectedOutput' => [Operation::ROTATE_BASED, 'c'],
             ],
             [
                 '$input' => 'reverse positions 7 through 2',
