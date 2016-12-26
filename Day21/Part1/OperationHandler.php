@@ -22,10 +22,12 @@ class OperationHandler
             case Operation::MOVE:
                 return $this->move($operation, $input);
             case Operation::ROTATE_BASED:
-                $index = strpos($input, $operation[1]);
-                $rotations = 1 + $index;
-                if ($index >= 4) $rotations++;
-                return $this->rotateRight([Operation::ROTATE_RIGHT, $rotations], $input);
+                return $this->rotateBased($operation, $input);
+            case Operation::REVERSE_ROTATE_BASED:
+                // Ugly, works only for strings 8 chars long
+                $letterIndex = strpos($input, $operation[1]);
+                $indexToRotation = [1 => 1, 3 => 2, 5 => 3, 7 => 4, 2 => 6, 4 => 7, 6 => 8, 0 => 9];
+                return $this->rotateLeft([Operation::ROTATE_LEFT, $indexToRotation[$letterIndex]], $input);
 
         }
     }
@@ -81,5 +83,13 @@ class OperationHandler
             }
         }
         return $result;
+    }
+
+    private function rotateBased(array $operation, string $input): string
+    {
+        $index = strpos($input, $operation[1]);
+        $rotations = 1 + $index;
+        if ($index >= 4) $rotations++;
+        return $this->rotateRight([Operation::ROTATE_RIGHT, $rotations], $input);
     }
 }

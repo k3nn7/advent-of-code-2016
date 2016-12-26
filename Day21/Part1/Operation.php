@@ -11,4 +11,5 @@ class Operation
     public const ROTATE_BASED = 5;
     public const REVERSE = 6;
     public const MOVE = 7;
+    public const REVERSE_ROTATE_BASED = 8;
 }
