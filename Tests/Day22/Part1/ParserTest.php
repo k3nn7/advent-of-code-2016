@@ -32,11 +32,11 @@ class ParserTest extends \PHPUnit_Framework_TestCase
         return [
             [
                 '$input' => '/dev/grid/node-x0-y6     92T   70T    22T   76%',
-                '$expectedNode' => new Node(92, 70)
+                '$expectedNode' => new Node(92, 70, 0, 6)
             ],
             [
                 '$input' => '/dev/grid/node-x2-y3     92T   73T    19T   79%',
-                '$expectedNode' => new Node(92, 73)
+                '$expectedNode' => new Node(92, 73, 2, 3)
             ],
         ];
     }
