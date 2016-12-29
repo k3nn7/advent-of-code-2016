@@ -80,4 +80,25 @@ class Vertex
     {
         return array_values($this->neighbours);
     }
+
+    public function shortestPathThroughAllNeighbours(array $visited = [], Vertex $lastVertex)
+    {
+        $shortest = PHP_INT_MAX;
+        $visited[spl_object_hash($this)] = $this;
+
+        if (empty(array_diff_key($this->neighbours, $visited))) {
+            return $this->distanceToNeighbour($lastVertex);
+        }
+
+        foreach ($this->neighbours as $neighbour) {
+            if (!in_array($neighbour, $visited)) {
+                $distance =
+                    $this->distanceToNeighbour($neighbour) +
+                    $neighbour->shortestPathThroughAllNeighbours(array_merge($visited, [spl_object_hash($neighbour) => $neighbour]), $lastVertex);
+                if ($distance < $shortest) $shortest = $distance;
+            }
+        }
+
+        return $shortest;
+    }
 }

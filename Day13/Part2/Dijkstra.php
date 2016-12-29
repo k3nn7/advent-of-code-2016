@@ -20,6 +20,11 @@ class Dijkstra
         }
     }
 
+    public function getVertexByHash(string $hash): Vertex
+    {
+        return $this->vertices[$hash];
+    }
+
     public function calculateDistancesFrom(Vertex $start): array
     {
         $distances = [];
